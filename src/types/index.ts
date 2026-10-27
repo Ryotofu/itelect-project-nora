@@ -15,3 +15,11 @@ export interface AuthResponse {
   token: string;
   user: User;
 }
+
+// ===== SESSION 11: AI REVIEW TYPE =====
+export interface AiReview {
+  summary: string;
+  strengths: string[];
+  improvements: string[];
+  readiness: "ready" | "almost" | "not-yet";
+}

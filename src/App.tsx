@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getCourses } from './api/courses';
 import { loginUser, logoutUser } from './api/auth';
 import type { Course } from './types';
+import AiReviewSection from './components/AiReviewSection';
 
 export default function App() {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -33,13 +34,16 @@ export default function App() {
   };
 
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>IT ELECTIVE 4 - GT4 Part 2</h1>
+    <div style={{ padding: '2rem', fontFamily: 'sans-serif', maxWidth: '800px', margin: '0 auto' }}>
+      <h1>IT ELECTIVE 4 - GT5 Gemini AI Integration</h1>
 
       {isLoggedIn ? (
         <div>
           <p>Status: <strong>Authenticated</strong></p>
           <button onClick={handleLogout}>Log Out</button>
+
+          {/* ===== SESSION 11: AI REVIEW SECTION ===== */}
+          <AiReviewSection />
         </div>
       ) : (
         <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxWidth: '300px' }}>

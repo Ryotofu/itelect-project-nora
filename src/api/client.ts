@@ -1,3 +1,5 @@
+import type { AiReview } from '../types';
+
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://itelect4-backend-weld.vercel.app';
 
 export async function apiFetch<T>(
@@ -24,4 +26,12 @@ export async function apiFetch<T>(
   }
 
   return data as T;
+}
+
+// ===== SESSION 11: ASK AI API CALL =====
+export function askAi(prompt: string): Promise<AiReview> {
+  return apiFetch<AiReview>('/api/ai', {
+    method: 'POST',
+    body: JSON.stringify({ prompt }),
+  });
 }
