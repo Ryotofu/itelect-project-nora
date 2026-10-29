@@ -25,7 +25,7 @@ export default function App() {
       .catch((err) => console.error("Failed to load courses:", err));
   }, []);
 
-  const handleAuth = async (e: React.FormEvent) => {
+const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     try {
@@ -35,8 +35,8 @@ export default function App() {
         await loginUser({ email, password });
       }
       setIsLoggedIn(true);
-    } catch (err: any) {
-      setError(err.message || "Authentication failed");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Authentication failed");
     }
   };
 

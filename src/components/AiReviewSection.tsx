@@ -14,7 +14,7 @@ export default function AiReviewSection() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (prompt.trim().length < 20) {
       setError("Describe your project in at least 20 characters.");
@@ -28,8 +28,8 @@ export default function AiReviewSection() {
     try {
       const result = await askAi(prompt);
       setReview(result);
-    } catch (err: any) {
-      setError(err.message || "Failed to generate AI review.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to generate AI review.");
     } finally {
       setLoading(false);
     }
