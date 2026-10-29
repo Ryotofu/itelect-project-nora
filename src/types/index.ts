@@ -23,3 +23,12 @@ export interface AiReview {
   improvements: string[];
   readiness: "ready" | "almost" | "not-yet";
 }
+
+// ===== PROJECT SUBMISSION TYPE =====
+export interface Submission {
+  id: string;
+  courseCode: string;
+  title: string;
+  githubUrl: string;
+  createdAt: string;
+}
